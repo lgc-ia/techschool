@@ -16,6 +16,7 @@ const formationOptions = [
 
 export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
   const [open, setOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const previousFocusRef = React.useRef<HTMLElement | null>(null);
@@ -51,12 +52,21 @@ export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     event.currentTarget.reset();
-    setOpen(false);
+    closeDialog();
+  }
+
+  function openDialog() {
+    setIsClosing(false);
+    setOpen(true);
+  }
+
+  function closeDialog() {
+    setIsClosing(true);
   }
 
   function handleDialogKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Escape") {
-      setOpen(false);
+      closeDialog();
       return;
     }
 
@@ -89,7 +99,7 @@ export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
       trigger.props.onClick?.(event);
 
       if (!event.defaultPrevented) {
-        setOpen(true);
+        openDialog();
       }
     },
   });
@@ -100,16 +110,21 @@ export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
       {mounted && open
         ? createPortal(
             <div
-              className="contact-dialog-overlay"
+              className={`contact-dialog-overlay ${isClosing ? "is-closing" : "is-opening"}`}
+              onAnimationEnd={(event) => {
+                if (isClosing && event.target === event.currentTarget) {
+                  setOpen(false);
+                }
+              }}
               onMouseDown={(event) => {
                 if (event.target === event.currentTarget) {
-                  setOpen(false);
+                  closeDialog();
                 }
               }}
             >
               <div
                 ref={dialogRef}
-                className="contact-dialog-content"
+                className={`contact-dialog-content ${isClosing ? "is-closing" : "is-opening"}`}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={titleId}
@@ -120,7 +135,7 @@ export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
                   type="button"
                   className="contact-dialog-close"
                   aria-label="Fermer la modale"
-                  onClick={() => setOpen(false)}
+                  onClick={closeDialog}
                 >
                   ×
                 </button>
@@ -200,7 +215,7 @@ export function ContactInquiryDialog({ trigger }: ContactInquiryDialogProps) {
                     <button
                       type="button"
                       className="contact-dialog-button secondary"
-                      onClick={() => setOpen(false)}
+                      onClick={closeDialog}
                     >
                       Fermer
                     </button>
