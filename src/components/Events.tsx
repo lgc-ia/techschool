@@ -3,17 +3,17 @@ import { Calendar, ArrowRight } from "lucide-react";
 
 const events = [
   {
-    date: "15 Nov 2025",
+    date: "15 Nov 2026",
     title: "Portes Ouvertes - Découverte des formations",
     description: "Venez rencontrer notre équipe et découvrir nos campus.",
   },
   {
-    date: "22 Nov 2025",
+    date: "22 Nov 2026",
     title: "Workshop IA & Machine Learning",
     description: "Introduction pratique aux concepts d'intelligence artificielle.",
   },
   {
-    date: "5 Déc 2025",
+    date: "5 Déc 2026",
     title: "Hackathon Cybersécurité",
     description: "24h pour relever des défis de sécurité informatique.",
   },
