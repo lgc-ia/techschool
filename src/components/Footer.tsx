@@ -6,7 +6,8 @@ export function Footer() {
   return (
     <footer className="bg-black border-t border-gray-900 py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a
               href="#"
@@ -32,7 +33,7 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm text-gray-400">
             <a
               href="#"
               className="hover:text-white transition-colors duration-200"
@@ -49,16 +50,24 @@ export function Footer() {
               href="#"
               className="hover:text-white transition-colors duration-200"
             >
+              Contact
+            </a>
+            <a
+              href="#"
+              className="hover:text-white transition-colors duration-200"
+            >
               Politique de confidentialité
             </a>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-gray-400">
-          &copy; TechnoSchool - Recherche &amp; D&eacute;veloppement {year}.
-        </p>
+        <div
+          className="mt-8 border-t border-gray-900 text-center text-sm text-gray-500"
+          style={{ paddingTop: "4rem", paddingBottom: "2rem" }}
+        >
+          © {year} TechnoSchool — Recherche &amp; Développement, tous droits réservés.
+        </div>
       </div>
     </footer>
   );
 }
-

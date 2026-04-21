@@ -1,9 +1,8 @@
-/* @jsxImportSource react */
-/// <reference types="react" />
-/// <reference lib="dom" />
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 
-export function Nav(): JSX.Element {
+export function Nav(): React.JSX.Element {
   const [active, setActive] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
@@ -102,6 +101,7 @@ export function Nav(): JSX.Element {
           >
             Nos formations
           </a>
+          <span className="site-nav-sep" aria-hidden="true">/</span>
           <a
             href="#team"
             className={linkClass("team")}
@@ -113,6 +113,7 @@ export function Nav(): JSX.Element {
           >
             La Team
           </a>
+          <span className="site-nav-sep" aria-hidden="true">/</span>
           <a
             href="#events"
             className={linkClass("events")}

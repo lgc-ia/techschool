@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import Image from "next/image";
 // ImageWithFallback removed; switched to next/image
@@ -71,7 +73,7 @@ const team = [
 
 export function Team() {
   return (
-    <section id="team" className="py-20 px-6" style={{ scrollMarginTop: "6rem" }}>
+    <section id="team" className="py-20 px-6 bg-black/60" style={{ scrollMarginTop: "6rem" }}>
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

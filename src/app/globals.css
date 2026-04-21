@@ -695,6 +695,10 @@
     border-radius: 3px;
   }
 
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
   .rounded-xl {
     border-radius: calc(var(--radius)  + 4px);
   }
@@ -1587,9 +1591,14 @@ html{scroll-behavior:smooth}
 .site-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);border-bottom:1px solid #111;height:64px}
 .site-nav-inner{max-width:72rem;margin:0 auto;height:100%;padding:0 1rem;display:flex;align-items:center;justify-content:center}
 .site-nav-links{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
-.site-nav-link{color:rgba(255,255,255,.9);padding:.5rem 1rem;border-radius:10px;text-decoration:none;transition:color .15s ease,background .15s ease}
+.site-nav-link{position:relative;color:rgba(255,255,255,.9);padding:.5rem 1rem;border-radius:10px;text-decoration:none;transition:color .15s ease}
 @media (min-width:768px){.site-nav-link{padding:.5rem 1.25rem}}
-.site-nav-link:hover{color:#fff;background:rgba(255,255,255,.05)}
+.site-nav-link::after{content:"";position:absolute;left:1rem;bottom:.25rem;width:calc(100% - 2rem);height:2px;background:#a855f7;box-shadow:0 0 6px rgba(168,85,247,.7);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+@media (min-width:768px){.site-nav-link::after{left:1.25rem;width:calc(100% - 2.5rem)}}
+.site-nav-link:hover{color:#fff}
+.site-nav-link:hover::after{transform:scaleX(1)}
+.site-nav-sep{color:#a855f7;align-self:center;user-select:none;font-weight:300;text-shadow:0 0 6px rgba(168,85,247,.6)}
+@media (max-width:767px){.site-nav-sep{display:none}}
 .site-nav-link.is-active{color:#fff;background:rgba(255,255,255,.1)}
 /* Mobile-friendly burger and gradient active style for nav */
 .site-nav-toggle{display:inline-flex;flex-direction:column;gap:4px;position:absolute;right:1rem;top:50%;transform:translateY(-50%);width:36px;height:36px;align-items:center;justify-content:center;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.2);color:#fff;cursor:pointer}
@@ -1737,3 +1746,16 @@ html{scroll-behavior:smooth}
   .formation-detail-content{width:calc(100vw - 1rem);max-height:calc(100vh - 1rem);padding:1.25rem;border-radius:20px}
   .formation-detail-title{font-size:1.5rem}
 }
+
+/* CTA button pill shape */
+.btn-rounded{border-radius:9999px}
+
+/* Statistics section layout */
+.stats-container{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3rem}
+.stats-item{flex:1;text-align:center}
+.stats-sep{display:none;color:#a855f7;font-size:3.5rem;font-weight:200;line-height:1;text-shadow:0 0 10px rgba(168,85,247,.5);user-select:none;align-self:center}
+@media(min-width:768px){.stats-container{flex-direction:row;gap:2rem}.stats-sep{display:inline-block}}
+
+/* Events "En savoir plus" hover — translate whole button */
+.event-cta{transition:transform .3s ease-in-out,color .3s ease}
+.group:hover .event-cta{transform:translateX(.5rem)}

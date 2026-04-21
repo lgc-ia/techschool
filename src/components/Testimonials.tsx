@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Quote } from "lucide-react";
 
@@ -24,7 +26,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 bg-black/60">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (

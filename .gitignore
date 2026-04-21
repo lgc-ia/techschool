@@ -1,9 +1,23 @@
 node_modules/
 .dist/
 .next/
-.next/trace
+out/
+
+# env files
 .env
+.env.local
+.env.*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
 .vscode/
+.idea/
+
+# OS
 .DS_Store
+Thumbs.db
+
+# test coverage
 coverage/
-.idea/      
