@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Calendar, ArrowRight } from "lucide-react";
 
@@ -21,7 +23,7 @@ const events = [
 
 export function Events() {
   return (
-    <section id="events" className="py-20 px-6" style={{ scrollMarginTop: "6rem" }}>
+    <section id="events" className="section-scroll-margin py-20 px-6 bg-black/60">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +54,7 @@ export function Events() {
                   <h3 className="text-2xl mb-2">{event.title}</h3>
                   <p className="text-gray-400">{event.description}</p>
                 </div>
-                <button className="flex items-center gap-2 text-[#5C6FFF] hover:text-[#AD6BFF] transition-colors group-hover:gap-3 duration-300">
+                <button type="button" className="event-cta flex items-center gap-2 text-[#5C6FFF] hover:text-[#AD6BFF]">
                   En savoir plus
                   <ArrowRight className="w-5 h-5" />
                 </button>
